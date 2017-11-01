@@ -1,8 +1,8 @@
 (function() {
 	'use strict';
-	angular.module('ngSeedApp.directives', []);
-	angular.module('ngSeedApp.services', []);
-	angular.module('ngSeedApp.filters', []);
-	angular.module('ngSeedApp.constants', []);
-	angular.module('ngSeedApp.controllers', ['ngSeedApp.filters', 'ngSeedApp.services', 'ngSeedApp.directives', 'ngSeedApp.constants']);
+	angular.module('espAPP.directives', []);
+	angular.module('espAPP.services', []);
+	angular.module('espAPP.filters', []);
+	angular.module('espAPP.constants', []);
+	angular.module('espAPP.controllers', ['espAPP.filters', 'espAPP.services', 'espAPP.directives', 'espAPP.constants']);
 }());

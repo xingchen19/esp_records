@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module('ngSeedApp.constants')
+	angular.module('espAPP.constants')
 		.constant('ngConstants',
 			function() {
 				var constants = {};

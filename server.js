@@ -3,9 +3,9 @@ var app     = express();
 
 app.use('/', express.static(__dirname + '/'))
 
-app.get('/data',function(req,res){
-  res.send({"id": "154543545"});
-});
+// app.get('/data',function(req,res){
+//   res.send({"id": "154543545"});
+// });
 
 app.get('*',function(req,res){
   res.sendfile('src/index.html');

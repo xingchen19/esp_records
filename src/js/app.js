@@ -3,9 +3,9 @@
 
 	//Create a app level module which has dependencies on controllers and components
 	var ngPrototype =
-		angular.module('ngSeedApp', [
+		angular.module('espAPP', [
 			'ui.router',
-			'ngSeedApp.controllers'
+			'espAPP.controllers'
 		]);
 
 	ngPrototype.run(['$rootScope', '$state', '$stateParams',

@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module('ngSeedApp.controllers')
+	angular.module('espAPP.controllers')
 		.controller('moreController', [
 			'$scope',
 			function($scope) {
