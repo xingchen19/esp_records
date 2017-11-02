@@ -6,7 +6,8 @@
 			function($scope, ngService, ngConstants) {
 				$scope.title = "About";
 				$scope.version = ngConstants().VERSION;
-				ngService.getData().then(function(data) {
+				$scope.addRecord = ngService.postRecordData;
+				ngService.getRecordsData().then(function(data) {
 					console.log("get result is:");
 					console.log(data);
 					$scope.id = data[0]._source.id;
