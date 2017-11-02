@@ -7,6 +7,9 @@
 				$scope.title = "About";
 				$scope.version = ngConstants().VERSION;
 				$scope.addRecord = ngService.postRecordData;
+				$scope.putRecord = ngService.putRecordData;
+				console.log($scope.addRecord);
+				console.log($scope.putRecord);
 				ngService.getRecordsData().then(function(data) {
 					console.log("get result is:");
 					console.log(data);

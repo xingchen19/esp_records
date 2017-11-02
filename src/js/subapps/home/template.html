@@ -2,9 +2,35 @@
 	{{title  | makeUppercase}} <!-- Example of a filter -->
 </h2>
 
-
-
 <p>
-	This is a skeleton for my typical AngularJS web app. You can use it to quickly bootstrap your
-	angular projects.
+	This is a software for my recording ESP records. You can use it to quickly add records into database, and finish your work.
+	Enjoy your jouney life!
 </p>
+<div>
+    <h1 class="title">ESP Records:</h1>
+    <div class="row">
+		<div class="col-lg-6">
+			<div class="input-group">
+			  <input type="text" ng-model="keywords" class="form-control" placeholder="Search for...">
+			  <span class="input-group-btn">
+			    <button class="btn btn-default" type="button" ng-click="search()">Go!</button>
+			  </span>
+			</div><!-- /input-group -->
+		</div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr><th>编码</th><th>名称</th><th>科属</th><th>别名</th><th>操作</th></tr>
+		</thead>
+		<tbody ng-repeat="i in records">
+			<td>{{i._source.id}}</td>
+			<td>{{i._source.name}}</td>
+			<td>{{i._source.family}}</td>
+			<td>{{i._source.alias}}</td>
+			<td>
+				<button type="button" class="btn btn-default btn" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>  
+				<button type="button" class="btn btn-default btn" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button> 
+			</td>
+		</tbody>
+	</table>
+</div>
