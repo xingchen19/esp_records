@@ -10,12 +10,12 @@
 						if (!queryChar) {
 							queryChar = "\*";
 						};
-						ngService.getRecordsData(queryChar).then(function(data) {					
+						ngService.searchRecordsData(queryChar).then(function(data) {					
 						$scope.records = data;
 					});	
 				};
 				
-				ngService.getRecordsData("*").then(function(data){
+				ngService.searchRecordsData("*").then(function(data){
 					$scope.records = data;
 				    console.log($scope.records);
 				});

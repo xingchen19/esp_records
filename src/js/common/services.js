@@ -13,7 +13,7 @@
         "ngService",
         function($http, $q, ngConstants, client) {
 
-            function getRecordsAPI(queryChar){
+            function searchRecordsAPI(queryChar){
                 var deferred = $q.defer();
                 var queryBody = {
                     "query": {
@@ -72,7 +72,7 @@
 
             // Return public API.
             return ({
-                getRecordsData: getRecordsAPI,
+                searchRecordsData: searchRecordsAPI,
                 postRecordData: postRecordAPI.postData,
                 putRecordData: putRecordAPI.putData
             });
