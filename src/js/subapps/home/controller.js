@@ -6,14 +6,19 @@
 			function($scope, ngService) {
 				$scope.title = "Welcome";
 					$scope.search = function(){
-						console.log($scope.keywords);
-						ngService.getRecordsData($scope.keywords).then(function(data) {					
+						var queryChar = $scope.keywords;
+						if (!queryChar) {
+							queryChar = "\*";
+						};
+						ngService.getRecordsData(queryChar).then(function(data) {					
 						$scope.records = data;
 					});	
 				};
-				ngService.getRecordsData("*").then(function(data) {					
+				
+				ngService.getRecordsData("*").then(function(data){
 					$scope.records = data;
-				});				
+				    console.log($scope.records);
+				});
 			}
 		]);
 }());

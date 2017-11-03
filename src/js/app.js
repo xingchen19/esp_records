@@ -4,7 +4,8 @@
 	//Create a app level module which has dependencies on controllers and components
 	var ngPrototype =
 		angular.module('espAPP', [
-			'ui.router',
+			'ui.router', 
+			'elasticsearch',
 			'espAPP.controllers'
 		]);
 

@@ -1,39 +1,39 @@
 (function() {
     'use strict';
-    angular.module('espAPP.services')
-    .service(
+    var myApp = angular.module('espAPP.services')
+    myApp.service("client", 
+        function(esFactory,ngConstants){
+        return esFactory({
+            host: ngConstants().ESHOST,
+            log: 'trace'
+        });
+    });
+
+    myApp.service(
         "ngService",
-        function($http, $q, ngConstants) {
+        function($http, $q, ngConstants, client) {
 
-            var getRecordsAPI = {
-
-                getData: function(queryChar) {
-
-                    console.log(queryChar);
-
-                    var queryBody = {
-                        "query": {
-                            "query_string" : {
-                                "fields" : ["id", "name.*", "family"],
-                                "query" : queryChar,
-                                "use_dis_max" : true
-                            }
+            function getRecordsAPI(queryChar){
+                var deferred = $q.defer();
+                var queryBody = {
+                    "query": {
+                        "query_string" : {
+                            "fields" : ["id","name","family","alias"],
+                            "query" : queryChar,
+                            "use_dis_max" : true
                         }
-                    };
-
-                    var request = $http({
-                        method: "get",
-                        data: angular.toJson(queryBody),
-                        url: ngConstants().ESURL + "/esp-record-*/_search"
-                    });
-                    return (request.then(getRecordsAPI.handleSuccess, getRecordsAPI.handleError));
-                },
-                handleError: function(response) {
-                    return ($q.reject(response.data.message));
-                },
-                handleSuccess: function(response) {
-                    return (response.data.hits.hits);
-                }
+                    }
+                };
+                client.search({
+                    index: "esp-record-*",
+                    type: "esp",
+                    body: queryBody
+                }).then(function (response){
+                    deferred.resolve(response.hits.hits);
+                },function (err){
+                    deferred.reject(err);
+                });
+                return deferred.promise;
             };
 
             var postRecordAPI = {
@@ -72,7 +72,7 @@
 
             // Return public API.
             return ({
-                getRecordsData: getRecordsAPI.getData,
+                getRecordsData: getRecordsAPI,
                 postRecordData: postRecordAPI.postData,
                 putRecordData: putRecordAPI.putData
             });
