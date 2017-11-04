@@ -2,19 +2,23 @@
 	'use strict';
 	angular.module('espAPP.controllers')
 		.controller('aboutController', [
-			'$scope', 'ngService', 'ngConstants',
-			function($scope, ngService, ngConstants) {
-				$scope.title = "About";
+			'$scope', '$state', '$stateParams', 'ngService', 'ngConstants',
+			function($scope, $state, $stateParams, ngService, ngConstants) {
+				$scope.title = "ESP Record Operations";
 				$scope.version = ngConstants().VERSION;
-				$scope.addRecord = ngService.postRecordData;
-				$scope.putRecord = ngService.putRecordData;
-				console.log($scope.addRecord);
-				console.log($scope.putRecord);
-				ngService.getRecordsData().then(function(data) {
-					console.log("get result is:");
-					console.log(data);
-					$scope.id = data[0]._source.id;
+
+				$scope.receivedID = $stateParams.ID;
+
+				ngService.getRecordData($scope.receivedID).then(function(data){
+					$scope.getRecord = data;
+					$scope.indexRecord = function(){
+						console.log("$scope.getRecord is");
+						console.log($scope.getRecord);
+						ngService.indexRecordData($scope.getRecord);
+						$state.go("home");
+					};
 				});
+				let indexBody = {"id":"10005","name":"Name-5"};
 			}
 		]);
 }());

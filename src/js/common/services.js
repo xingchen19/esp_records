@@ -14,8 +14,8 @@
         function($http, $q, ngConstants, client) {
 
             function searchRecordsAPI(queryChar){
-                var deferred = $q.defer();
-                var queryBody = {
+                let deferred = $q.defer();
+                let queryBody = {
                     "query": {
                         "query_string" : {
                             "fields" : ["id","name","family","alias"],
@@ -25,7 +25,7 @@
                     }
                 };
                 client.search({
-                    index: "esp-record-*",
+                    index: "plant-records-*",
                     type: "esp",
                     body: queryBody
                 }).then(function (response){
@@ -36,45 +36,49 @@
                 return deferred.promise;
             };
 
-            var postRecordAPI = {
-                postData: function() {
-                    var request = $http({
-                        method: "post",
-                        data: {"id":"10002","name":"NAME-002","family":"景天科"},
-                        url: ngConstants().ESURL + "/esp-record-201710/esp/esp-11001"
-                    });
-                    return (request.then(postRecordAPI.handleSuccess, postRecordAPI.handleError));
-                },
-                handleError: function(response){
-                    return ($q.reject(response.data.message));
-                },
-                handleSuccess: function(response){
-                    return (response.data);
-                }
+            function getRecordAPI(indexID){
+                let deferred = $q.defer();
+                client.get({
+                    index: "plant-records-esp",
+                    type: "esp",
+                    id: indexID
+                }).then(function(response){
+                    deferred.resolve(response._source);
+                }, function(err){
+                    deferred.reject(err);
+                });
+                return deferred.promise;
             };
 
-            var putRecordAPI = {
-                putData: function() {
-                    var request = $http({
-                        method: "put",
-                        data: {"id":"11001","name":"NAME-11001","family":"Modified"},
-                        url: ngConstants().ESURL + "/esp-record-201710/esp/esp-11001"
-                    });
-                    return (request.then(putRecordAPI.handleSuccess, putRecordAPI.handleError));
-                },
-                handleError: function(response){
-                    return ($q.reject(response.data.message));
-                },
-                handleSuccess: function(response){
-                    return(response.data)
-                }
+            function indexRecordAPI(bodyJSON){
+                client.index({
+                    index: "plant-records-esp",
+                    type: "esp",
+                    id: bodyJSON.id,
+                    body: bodyJSON
+                },function(error, response){
+                   console.log(error);
+                   console.log(response);
+                });
+            };
+
+            function deleteRecordAPI(indexID){
+                client.delete({
+                    index: "plant-records-esp",
+                    type: "esp",
+                    id: indexID
+                },function(error,response){
+                    console.log(error);
+                    console.log(response);
+                });
             };
 
             // Return public API.
             return ({
                 searchRecordsData: searchRecordsAPI,
-                postRecordData: postRecordAPI.postData,
-                putRecordData: putRecordAPI.putData
+                getRecordData: getRecordAPI,
+                indexRecordData: indexRecordAPI,
+                deleteRecordData: deleteRecordAPI
             });
 
         }

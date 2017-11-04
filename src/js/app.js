@@ -30,7 +30,8 @@
 				}).state("about", {
 					url: "/about",
 					controller: 'aboutController',
-					templateUrl: 'src/js/subapps/about/template.html'
+					templateUrl: 'src/js/subapps/about/template.html',
+					params:{"ID":{}}
 				}).state("more", {
 					url: "/more",
 					controller: 'moreController',

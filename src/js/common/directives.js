@@ -6,7 +6,7 @@
 				scope: true, // use a child scope that inherits from parent
 				restrict: 'AE',
 				replace: 'true',
-				template: '<h3><a href = "https://github.com/xingchen19">My github</a></h3>'
+				template: '<h3><a href = "https://github.com/xingchen19">My github URL</a></h3>'
 			};
 		});
 }());

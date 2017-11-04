@@ -4,33 +4,39 @@
 
 <p>
 	This is WEB Portal of my ESP records systerm, Backstage management! You can use it to quickly add records into database, to finish your work.
+
+</p>
+<p>
 	Enjoy your jouney life!
 </p>
-
 <div>
     <h1 class="title">ESP Records:</h1>
     <div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-4 col-md-5 col-sm-6">
 			<div class="input-group">
 			  <input type="text" ng-model="keywords" class="form-control" placeholder="Search for...">
 			  <span class="input-group-btn">
-			    <button class="btn btn-default" type="button" ng-click="search()">Go!</button>
+			    <button class="btn btn-primary" role="button" ng-click="search()">Go!</button>
 			  </span>
 			</div><!-- /input-group -->
-		</div><!-- /.col-lg-6 -->
+		</div><!-- /.col-lg-4 -->
+		<div class="col-lg-4 col-md-5 col-sm-6">
+			<span class="btn btn-primary" role="button" ui-sref="about">Add Record</span>
+		</div><!-- /.col-lg-4 -->
 	</div><!-- /.row -->
+
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr><th>编码</th><th>名称</th><th>科属</th><th>别名</th><th>操作</th></tr>
 		</thead>
-		<tbody ng-repeat="i in records">
+		<tbody id="homeTbody" ng-repeat="i in records">
 			<td>{{i._source.id}}</td>
 			<td>{{i._source.name}}</td>
 			<td>{{i._source.family}}</td>
 			<td>{{i._source.alias}}</td>
 			<td>
-				<button type="button" class="btn btn-default btn" ng-click="edit($index);"><i class="glyphicon glyphicon-pencil"></i></button>  
-				<button type="button" class="btn btn-default btn" ng-click="delete();"><i class="glyphicon glyphicon-trash"></i></button> 
+				<button type="button" class="btn btn-default btn" ng-click="modifyRecord(i._source.id);"><i class="glyphicon glyphicon-pencil"></i></button>  
+				<button type="button" class="btn btn-default btn" ng-click="deleteRecord(i._source.id,$index);"><i class="glyphicon glyphicon-trash"></i></button>
 			</td>
 		</tbody>
 	</table>
