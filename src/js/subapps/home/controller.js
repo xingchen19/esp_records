@@ -23,13 +23,15 @@
 				};
 								
 				$scope.deleteRecord = function(ESindexID,$index){
-					ngService.deleteRecordData(ESindexID);
+					// delete record cann't be used since it reley on add record.
+					// TODO: Once add record finish, just uncomments below line to make delete function works
+					// ngService.deleteRecordData(ESindexID);
 					var x=document.getElementById("homeTbody");
 					x.remove($index);
 				};
 
 				$scope.modifyRecord = function(id){
-					$state.go("about", {ID: id});
+					$state.go("operation", {ID: id});
 				};
 			}
 		]);

@@ -51,26 +51,42 @@
             };
 
             function indexRecordAPI(bodyJSON){
+                let deferred = $q.defer();
                 client.index({
                     index: "plant-records-esp",
                     type: "esp",
                     id: bodyJSON.id,
                     body: bodyJSON
-                },function(error, response){
-                   console.log(error);
-                   console.log(response);
+                },function(response){
+                    deferred.resolve(response);
+                }, function(err){
+                    deferred.reject(err);
                 });
+                return deferred.promise;
             };
 
             function deleteRecordAPI(indexID){
+                let deferred = $q.defer();
                 client.delete({
                     index: "plant-records-esp",
                     type: "esp",
                     id: indexID
-                },function(error,response){
-                    console.log(error);
-                    console.log(response);
+                },function(response){
+                    deferred.resolve(response);
+                }, function(err){
+                    deferred.reject(err);
                 });
+                return deferred.promise;
+            };
+
+            function RecordsCountAPI(indexName){
+                let deferred = $q.defer();
+                client.count({
+                    index: indexName
+                },function(error, response){
+                    deferred.resolve(response.count);
+                });
+                return deferred.promise;
             };
 
             // Return public API.
@@ -78,7 +94,8 @@
                 searchRecordsData: searchRecordsAPI,
                 getRecordData: getRecordAPI,
                 indexRecordData: indexRecordAPI,
-                deleteRecordData: deleteRecordAPI
+                deleteRecordData: deleteRecordAPI,
+                countRecords: RecordsCountAPI
             });
 
         }

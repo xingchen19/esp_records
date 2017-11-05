@@ -26,16 +26,17 @@
 				$stateProvider.state("home", {
 					url: "/",
 					controller: 'homeController',
-					templateUrl: 'src/js/subapps/home/template.html'
+					templateUrl: 'src/js/subapps/home/template.html',
+					$templateCache: false
+				}).state("operation", {
+					url: "/operation",
+					controller: 'operationController',
+					templateUrl: 'src/js/subapps/operation/template.html',
+					params:{"ID":"0"}
 				}).state("about", {
 					url: "/about",
 					controller: 'aboutController',
-					templateUrl: 'src/js/subapps/about/template.html',
-					params:{"ID":{}}
-				}).state("more", {
-					url: "/more",
-					controller: 'moreController',
-					templateUrl: 'src/js/subapps/more/template.html'
+					templateUrl: 'src/js/subapps/about/template.html'
 				});
 			}
 		]);

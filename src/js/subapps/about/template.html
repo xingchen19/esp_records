@@ -1,28 +1,9 @@
 <h2>
 	{{title}}
 </h2>
+
 <p>Version: {{version}}</p>
-<p>
-	The record operations, including view, add, modify and delete actions in the ESP systerm.
-</p>
 
-<p>Index ID: {{receivedID}}</p>
+<p> ESP (Encyclopedias of Succulent Plants) System</p>
 
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>Filed Name</th>
-			<th>Filed Value</th>
-		</tr>
-	</thead>
-	<tbody ng-repeat="(key,value) in getRecord">
-		<tr>
-			<td class="col-lg-2"><b>{{key}} : </b></td>
-			<td class="col-lg-10"><textarea class="form-control" rows="4">{{value}}</textarea></td>
-		</tr>
-	</tbody>
-</table>
-
-<p><a class="btn btn-primary" role="button" ng-click="indexRecord()">Modify</a></p>
-<p><a class="btn btn-primary" role="button" ng-click="putRecord()">Put Record</a></p>
 <github-url></github-url> <!-- Example of a directive -->

@@ -1,0 +1,36 @@
+<h2>
+	{{title}}
+</h2>
+<p>
+	The record operations, including view, add, modify and delete actions in the ESP systerm.
+</p>
+<p>Index ID: {{receivedID}}</p>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Filed Name</th>
+			<th>Filed Value</th>
+		</tr>
+	</thead>
+	<tbody ng-repeat="(key,value) in getRecord">
+		<tr ng-hide="key == 'id'">
+			<td class="col-lg-2 col-sm-2"><b>{{key}} : </b></td>
+			<td class="col-lg-10 col-sm-10"><textarea class="form-control" rows="4" ng-model="getRecord[key]"></textarea></td>
+		</tr>
+	</tbody>
+</table>
+<hr style="height:2px;border:none;border-top:2px solid #CCCCCC;" />
+<div class="row">
+	<div class="col-lg-2 col-sm-2">
+		<input type="text" ng-model="newLineName" class="form-control" placeholder="Line Name...">
+	</div>
+	<div class="col-lg-10 col-sm-10">
+		<button class="btn btn-primary" ng-click="addNewLine()">Add New Line</button>
+	</div>
+</div>
+
+<hr style="height:2px;border:none;border-top:2px solid #CCCCCC;" />
+
+<p><a class="btn btn-primary" role="button" ng-click="indexRecord()" ng-show="isModify">Modify Record</a></p>
+<p><a class="btn btn-primary" role="button" ng-click="indexRecord()" ng-show="!isModify">Add Record</a></p>
