@@ -6,6 +6,7 @@
 		angular.module('espAPP', [
 			'ui.router', 
 			'elasticsearch',
+			'btford.markdown',
 			'espAPP.controllers'
 		]);
 

@@ -11,6 +11,9 @@ This project is a skeleton for a typical [AngularJS](http://angularjs.org/) web 
 4. Navigate to localhost:9000 and start hacking..
 
 
-### To Do:
+### To Do: [Todo 列表](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#13-待办事宜-todo-列表)
 
-1. Build and Test tasks
+- [x] Manual test
+- [ ] Build 
+- [ ] Test Task
+
