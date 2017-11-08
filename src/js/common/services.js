@@ -50,12 +50,12 @@
                 return deferred.promise;
             };
 
-            function indexRecordAPI(bodyJSON){
+            function indexRecordAPI(indexID, bodyJSON){
                 let deferred = $q.defer();
                 client.index({
                     index: "plant-records-esp",
                     type: "esp",
-                    id: bodyJSON.id,
+                    id: indexID,
                     body: bodyJSON
                 },function(response){
                     deferred.resolve(response);

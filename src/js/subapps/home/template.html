@@ -27,16 +27,15 @@
 
 	<table class="table table-striped table-hover table-bordered">
 		<thead>
-			<tr><th>编码</th><th>名称</th><th>科属</th><th>别名</th><th>操作</th></tr>
+			<tr><th>图片</th><th>名称</th><th>描述</th><th>操作</th></tr>
 		</thead>
 		<tbody id="homeTbody" ng-repeat="i in records">
-			<td>{{i._source.id}}</td>
+			<td>{{i._source.picture}}</td>
 			<td>{{i._source.name}}</td>
-			<td>{{i._source.family}}</td>
-			<td>{{i._source.alias}}</td>
+			<td>{{i._source.description}}</td>
 			<td>
-				<button type="button" class="btn btn-default btn" ng-click="modifyRecord(i._source.id);"><i class="glyphicon glyphicon-pencil"></i></button>  
-				<!-- <button type="button" class="btn btn-default btn" ng-click="deleteRecord(i._source.id,$index);"><i class="glyphicon glyphicon-trash"></i></button> -->
+				<button type="button" class="btn btn-default btn" ng-click="modifyRecord(i._id);"><i class="glyphicon glyphicon-pencil"></i></button>  
+				<button type="button" class="btn btn-default btn" ng-click="deleteRecord(i._id,$index);"><i class="glyphicon glyphicon-trash"></i></button>
 			</td>
 		</tbody>
 	</table>

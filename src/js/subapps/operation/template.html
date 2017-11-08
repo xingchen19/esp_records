@@ -4,7 +4,13 @@
 <p>
 	The record operations, including view, add, modify and delete actions in the ESP systerm.
 </p>
-<p>Index ID: {{receivedID}}</p>
+<btf-markdown>---</btf-markdown>
+<h2 ng-show="!isModify">Add the record:
+	<p><a class="btn btn-primary" role="button" ng-click="indexRecord()">Add Record</a></p>
+</h2>
+<h2 ng-show="isModify">Modify the record: 
+	<p><a class="btn btn-primary" role="button" ng-click="indexRecord()">Modify Record</a></p>
+</h2>
 
 <table class="table table-hover">
 	<thead>
@@ -14,14 +20,14 @@
 		</tr>
 	</thead>
 	<tbody ng-repeat="(key,value) in getRecord">
-		<tr ng-hide="key == 'id'">
+		<tr>
 			<td class="col-lg-2 col-sm-2"><b>{{key}} : </b></td>
 			<td class="col-lg-10 col-sm-10"><textarea class="form-control" rows="4" ng-model="getRecord[key]"></textarea></td>
 		</tr>
 	</tbody>
 </table>
 <hr style="height:2px;border:none;border-top:2px solid #CCCCCC;" />
-<div class="row">
+<!-- <div class="row">
 	<div class="col-lg-2 col-sm-2">
 		<input type="text" ng-model="newLineName" class="form-control" placeholder="Line Name...">
 	</div>
@@ -29,7 +35,7 @@
 		<button class="btn btn-primary" ng-click="addNewLine()">Add New Line</button>
 	</div>
 </div>
-
+ -->
 <hr style="height:2px;border:none;border-top:2px solid #CCCCCC;" />
 
 <p><a class="btn btn-primary" role="button" ng-click="indexRecord()" ng-show="isModify">Modify Record</a></p>
