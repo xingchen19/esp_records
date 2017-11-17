@@ -1,5 +1,5 @@
 # ESP Records System
-Elasticsearch data process, support display data via markdown format. Introduced bootstrap, ui-router, elasticsearch-browser, and angular-markdown-directive, etc... 
+By angularjs: Elasticsearch data process, support display data via markdown format. Introduced bootstrap, ui-router, elasticsearch-browser, and angular-markdown-directive, etc... 
 ## Major functions:
 > 1. Add record to Elasticsearch
 > 2. Get record from Elasticsearch
